@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situacao Aluno</title>
+</head>
+<body>
+    <h1>Situação do Aluno</h1>
+    <form id="frm">
+        <h2>Nome: <input type="text" id="inNome" required></h2>
+        <h2>Nota 1: <input type="number" id="inNota1" required></h2>
+        <h2>Nota 2: <input type="number" id="inNota2" required></h2>
+        <input type="submit" value="Verificar Situação">
+    </form>
+
+    <h3 id="resultadoNome"></h3>
+    <h4 id="resultadoSituacao"></h4>
+
+    <script>
+        // Pegando o formulário e as tags de resposta
+        const frm = document.querySelector("#frm");
+        const resultadoNome = document.querySelector("#resultadoNome");
+        const resultadoSituacao = document.querySelector("#resultadoSituacao");
+
+        // Adicionando o evento de submit
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault(); // Impede o envio do formulário e recarregamento da página
+
+            // Pegando os valores dos inputs
+            const nome = document.querySelector("#inNome").value;
+            const n1 = Number(document.querySelector("#inNota1").value);
+            const n2 = Number(document.querySelector("#inNota2").value);
+
+            // Calculando a média
+            const media = (n1 + n2) / 2;
+
+            // Exibindo a média
+            resultadoNome.innerText = `${nome}, sua média é ${media.toFixed(1)}`;
+
+            // Verificando se o aluno foi aprovado ou reprovado
+            if (media >= 7) {
+                resultadoSituacao.innerText = `Parabéns ${nome}, você foi aprovado!`;
+                resultadoSituacao.style.color = "blue";
+            } else {
+                resultadoSituacao.innerText = `${nome}, você não foi aprovado.`;
+                resultadoSituacao.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>
