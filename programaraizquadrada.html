@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <h1>Raiz quadrada</h1>
+        <p>informe o numero <input id="inNumero"></p>
+        <input type="submit" value="Exibir valor da raiza quadrada">
+        <h2>Sua raiz</h2>
+
+    </form>
+
+    <script>
+        const frm = document.querySelector("form")
+        const resultado = document.querySelector("h2")
+
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const numero = Number(frm.inNumero.value)
+
+            const raiz = Math.sqrt(numero)
+            const raizString = raiz.toString()
+
+            if (raizString.includes(".")) {
+
+                resultado.innerText = `${numero} n possui uma raiz exata`
+
+            } else {
+                resultado.innerText = ` a raiz de ${numero} é ${raizString}`
+
+            }
+
+
+
+
+
+
+        })
+
+    </script>
+</body>
+
+</html>
