@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Programa Velocidade</h1>
+    <form action="">
+        <p>Velocidade da estrada: <input type="number" id="inEstrada"></p>
+        <p>Velocidade do condutor: <input type="number" id="inCondutor"></p>
+        <input type="submit" value="Verificar se existe multa">
+    </form>
+    <h2>Resultado</h2>
+
+    <script>
+        const frm = document.querySelector("form");
+        const resultado = document.querySelector("h2");
+
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            
+            const estrada = parseFloat(frm.inEstrada.value);
+            const condutor = parseFloat(frm.inCondutor.value);
+            const vintePorcento = estrada * 0.2;
+
+            if (condutor <= estrada) {
+                resultado.innerText = `Sem multa`;
+            } else if (condutor <= estrada + vintePorcento) {
+                resultado.innerText = `Multa leve`;
+            } else {
+                resultado.innerText = `Multa alta`;
+            }
+        });
+    </script>
+</body>
+</html>

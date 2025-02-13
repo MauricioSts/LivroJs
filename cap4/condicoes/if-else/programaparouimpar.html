@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>par ou impar</h1>
+    <form >
+        <p>Numero: <input type="number" id="inNumero"></p>
+        <input type="submit" value="Verificar agora">
+
+    </form>
+    <h2>Numero: </h2>
+
+    <script>
+        const frm = document.querySelector("form")
+        const resultado = document.querySelector("h2")
+
+        frm.addEventListener("submit",(e) => {
+            e.preventDefault()
+            const numero = frm.inNumero.value
+            const par = numero % 2 
+
+            if(par === 0 ){
+                resultado.innerText = `o numero ${numero} é par`
+            }else{
+                resultado.innerText = `o numero ${numero} é impar`
+            }
+        })
+    </script>
+</body>
+</html>
