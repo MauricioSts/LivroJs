@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>caixa eletronico</h1>
+    <form >
+        <p>Valor do saque R$: <input id="inValor" type="number"></p>
+        <input type="submit"  value="Exibir valor do saque">
+        <p id="nCem">100</p>
+        <p id="nCinco">50</p>
+        <p id="nDez">10</p>
+    </form>
+
+    <script>
+        const frm = document.querySelector("form")
+        const nCem = document.getElementById("nCem")
+        const nCinco = document.getElementById("nCinco")
+        const nDez = document.getElementById("nDez")
+
+
+        frm.addEventListener("submit", (e) =>{
+            e.preventDefault()
+            const saque = Number(frm.inValor.value)
+
+           const notasCem =Math.floor(saque/100) 
+           let resto = saque%100
+           const notasCinquenta = Math.floor(resto/50)
+           resto = resto%50
+           const notasDez = Math.floor(resto/10)
+           
+            if(saque < 10){
+                alert("Saque indisponivel no momento, tente mais tarde")
+                return
+            } 
+
+            if(notasCem> 0 ){
+                nCem.innerText = `${notasCem}`
+            }
+
+            if(notasCinquenta > 0 ){
+                nCinco.innerText = `${notasCinquenta}`
+            }
+
+            if(notasDez>0){
+                nDez.innerText = `${notasDez}`
+            }
+
+
+            
+        })
+    </script>
+</body>
+</html>
