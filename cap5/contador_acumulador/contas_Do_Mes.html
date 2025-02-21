@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>contas do mes</h1>
+    <form>
+        <p>Descrição da conta: <input type="text" name="" id="inDesc"></p>
+        <p>Valor da conta: <input type="text" name="" id="inValor"></p>
+        <input type="submit" name="" id="" value="Registrar conta">
+
+    </form>
+    <h3>contas</h3>
+    <h2>resultado</h2>
+
+    <script>
+        const frm = document.querySelector("form")
+        const registro = document.querySelector("h3")
+        const resultado = document.querySelector("h2")
+
+
+        let numContas = 0
+        let valorTotal = 0
+        let resposta = ""
+
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault()
+
+            const desc = frm.inDesc.value
+            const valor = Number(frm.inValor.value)
+
+            numContas++
+
+            valorTotal = valorTotal + valor
+
+            resposta += `${desc} R$: ${valor.toFixed(2)} \n`
+            registro.innerText = `${resposta} -------------------------`
+
+
+            resultado.innerText = `(${numContas}) Contas a pagar e o valor total é: ${valorTotal}`
+
+            frm.inDesc.value = ""
+            frm.inValor.value = ""
+        })
+    </script>
+</body>
+
+</html>
